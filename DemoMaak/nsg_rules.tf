@@ -12,3 +12,5 @@ resource "azurerm_network_security_rule" "DemoMaak" {
     network_security_group_name = "${azurerm_network_security_group.DemoMaak.name}"
      
 }
+
+
