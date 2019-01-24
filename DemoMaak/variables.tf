@@ -36,10 +36,15 @@ variable "AKSPrefix" {
 }
 variable "KubernetesCluserName" {
     type = "string"
-    default = "${var.AKSPrefix}-C01"
+    default = "DM-UKW-AKS-C01"
   
 }
 
+variable "agent_count" {
+    type = "string"
+    default = 1
+  
+}
 
 
 

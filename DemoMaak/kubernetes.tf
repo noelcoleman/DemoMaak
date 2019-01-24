@@ -4,6 +4,14 @@ resource "azurerm_kubernetes_cluster" "DemoMaak" {
     resource_group_name = "${azurerm_resource_group.DemoMaak.name}"
     dns_prefix = "${var.AKSPrefix}-A"
 
+    linux_profile {
+        admin_username = "demomaak"
+
+        ssh_key {
+            key_data = "${file("${var.ssh_public_key}")}"
+        }
+    }
+
     agent_pool_profile {
         name = "default"
         count = 1
@@ -13,8 +21,8 @@ resource "azurerm_kubernetes_cluster" "DemoMaak" {
     }
 
     service_principal {
-        client_id     = "00000000-0000-0000-0000-000000000000"
-        client_secret = "00000000000000000000000000000000"
+        client_id     = "${var.client_id}"
+        client_secret = "${var.client_secret}"
 
     }
 }
